@@ -15,7 +15,13 @@ public class SalarioTransferido {
                 throw new IllegalArgumentException("Salário ou benefícios não pode ser negativos");
             }
 
-            if (salarioProposto >= 0 && salarioProposto <= 1100.00 ) { 
+            double imposto = (salarioProposto >= 0 && salarioProposto <= 1100.00) ? 0.05 :
+                             (salarioProposto >= 1100.01 && salarioProposto <= 2500.00) ? 0.1 : 0.15;
+            double salarioBeneficiosTotal = (salarioProposto - (salarioProposto * imposto)) + beneficios;   
+            System.out.println("Segue valor total líquido do salário com os benefócios: " + salarioBeneficiosTotal);
+
+
+            /*if (salarioProposto >= 0 && salarioProposto <= 1100.00 ) { 
                 double salarioBeneficiosTotal = (salarioProposto - (salarioProposto * 0.05)) + beneficios;   
                 System.out.println("Segue valor total líquido do salário com os benefócios: " + salarioBeneficiosTotal);
             }
@@ -27,7 +33,7 @@ public class SalarioTransferido {
             else{
                 double salarioBeneficiosTotal = (salarioProposto - (salarioProposto * 0.15)) + beneficios;   
                 System.out.println("Segue valor total líquido do salário com os benefócios: " + salarioBeneficiosTotal);
-            }
+            }*/
         }
 
         catch (Exception e) {
